@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  # The Database Service
+  db:
+    image: postgres:15-alpine
+    container_name: labflow_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=pA/~O?i8\;80
+      - POSTGRES_DB=labflow_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # The Backend Service
+  backend:
+    build: ./backend
+    container_name: labflow_backend
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8001:8000"
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
