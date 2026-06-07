@@ -17,6 +17,7 @@ I built this project to solve a specific problem: labs lose track of active case
 ##  Tech Stack
 
 ### Frontend (The Face)
+- **Language:** TypeScript
 - **Framework:** Next.js (React)
 - **Styling:** Tailwind CSS
 - **Visualization:** Recharts
